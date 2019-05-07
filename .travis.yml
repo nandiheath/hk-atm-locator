@@ -22,9 +22,9 @@ jobs:
   include:
     - stage: build
       script:
-        - ./scripts/run.sh
+        - scripts/run.sh
       after_success:
-        - ./scripts/git_update.sh
+        - scripts/git_update.sh
 
     - stage: deploy
       script:
