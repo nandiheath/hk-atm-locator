@@ -7,6 +7,8 @@ setup_git() {
 }
 
 commit_country_json_files() {
+  git checkout -b master
+
   git status
   # Current month and year, e.g: Apr 2018
   dateAndMonth=`date "+%b %Y"`
