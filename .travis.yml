@@ -25,13 +25,10 @@ jobs:
       script:
         - cd $TRAVIS_BUILD_DIR
         - bash scripts/run.sh
-      after_success:
-        - cd $TRAVIS_BUILD_DIR/
-        - bash scripts/git_update.sh
-
     - stage: deploy
       script:
-        - echo "Finished"
+        - cd $TRAVIS_BUILD_DIR/
+        - bash scripts/git_update.sh
       #   # if this is build from tag, just update the tag name, otherise use the previous tag name
       #   - export TRAVIS_TAG=`git describe --tags --exact-match`
       #   - echo $TRAVIS_TAG
