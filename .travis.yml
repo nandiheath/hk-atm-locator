@@ -14,6 +14,9 @@ env:
 
 cache: npm
 
+before_install:
+  - cd transformer/address-parser
+  - npm install
 
 jobs:
   include:
