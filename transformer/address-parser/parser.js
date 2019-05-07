@@ -12,7 +12,7 @@ const { log } = console;
  * Termination process
  */
 function end() {
-  process.exit(1);
+  process.exit(0);
 }
 
 async function parseAddress(atm) {
