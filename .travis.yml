@@ -1,3 +1,4 @@
+language: node_js
 node_js:
     - "8"
 stages:
@@ -22,9 +23,9 @@ jobs:
   include:
     - stage: build
       script:
-        - scripts/run.sh
+        - bash scripts/run.sh
       after_success:
-        - scripts/git_update.sh
+        - bash scripts/git_update.sh
 
     - stage: deploy
       script:
