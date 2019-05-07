@@ -23,8 +23,10 @@ jobs:
   include:
     - stage: build
       script:
+        - cd $TRAVIS_BUILD_DIR
         - bash scripts/run.sh
       after_success:
+        - cd $TRAVIS_BUILD_DIR/
         - bash scripts/git_update.sh
 
     - stage: deploy
