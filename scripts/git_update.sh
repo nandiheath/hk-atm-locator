@@ -21,7 +21,7 @@ commit_country_json_files() {
 }
 
 upload_files() {
-  git remote add upstream https://${GH_TOKEN}@github.com/MVSE-outreach/resources.git > /dev/null 2>&1
+  git remote add upstream https://nandiheath:${GH_TOKEN}@github.com/nandiheath/hk-atm-locator.git > /dev/null 2>&1
   git push --quiet --set-upstream upstream master
 }
 
