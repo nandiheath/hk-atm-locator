@@ -6,12 +6,9 @@ stages:
   # Build the docker image only on master branch
   - name: deploy
 
-
-env:
-  global:
-    - REPO=addressparser
-    - ORG=g0vhk
-
+branches:
+  only:
+  - master
 
 cache: npm
 
