@@ -7,8 +7,6 @@ setup_git() {
 }
 
 commit_country_json_files() {
-  git checkout -b master
-
   git status
   # Current month and year, e.g: Apr 2018
   dateAndMonth=`date "+%b %Y"`
@@ -25,7 +23,7 @@ upload_files() {
   git remote rm origin
   # Add new "origin" with access token in the git URL for authentication
   git remote add origin https://nandiheath:${GH_TOKEN}@github.com/nandiheath/hk-atm-locator.git > /dev/null 2>&1
-  git push origin master --quiet
+  git push origin --quiet
 }
 
 setup_git
