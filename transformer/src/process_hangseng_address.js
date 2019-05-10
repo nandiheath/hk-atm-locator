@@ -35,9 +35,6 @@ async function processFile(inputFile, outputFile, options) {
     await fs.writeFileAsync(outputFile, JSON.stringify(data, null, 4));
     end();
   });
-
-
-
 }
 
 
