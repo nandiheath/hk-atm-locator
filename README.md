@@ -41,6 +41,10 @@ Non-technical Contributors:
 - Responsible for updating documentation
 - Good command of written in English and Chinese
 
+UI/UX Contributors:
+- Responsible for refining UI/UX
+- Knowledge of UI/UX principles and techniques
+
 If you are interested, please join the telegram group for further discussion.
 
 ---
@@ -52,7 +56,7 @@ Telegram:
 https://t.me/joinchat/I_FIgxaIhCVeWKp1JKcMGQ
 
 Trello: 
-https://trello.com/b/FfBaG2b6/hk-atm-locator-web-portal
+https://trello.com/b/FfBaG2b6/hk-atm-locator
 
 Collaction:
 https://www.collaction.hk/s/hk-atm-locator
