@@ -13,7 +13,7 @@ commit_country_json_files() {
   # Current month and year, e.g: Apr 2018
   dateAndMonth=`date "+%b %Y"`
   # Stage the modified files in dist/output
-  git add -f transformer/processed/*.json
+  git add -f web/src/data/*.json
   # Create a new commit with a custom build message
   # with "[skip ci]" to avoid a build loop
   # and Travis build number for reference
