@@ -1,8 +1,7 @@
 const fs = require('fs');
 const moment = require('moment');
 const MTR_OPERATING_HOURS = require('../reference/mtr_operating_hours');
-const HANG_SENG_DATA = require('../unprocessed/hang_seng');
-const HSBC_DATA = require('../unprocessed/hsbc');
+const { remind, info } = require('./utils');
 
 const enrichBankAndNetwork = (bank, network) => {
   if (network === 'hang_seng' || network === 'hsbc' || network === 'jetco') {
@@ -24,21 +23,22 @@ const enrichOpeningHours = (record) => {
       const { open_time, close_time } = operatingHoursFromMTRLookup;
       OpeningHours = createGenericOpeningHours(open_time, close_time);
     }
-    return { OpeningHours };
+  }
+  return { OpeningHours };
 }
 
-const convertOpeningHourToHHmmFormat = (openingHours) => {
-    const OpeningHours =  openingHours.map((oh, idx) => {
-       const ohOpenTime = moment(oh.OpenTime,"h:mm").format("HH:mm");
-       const ohCloseTime = moment(oh.CloseTime,"h:mm").format("HH:mm");
-       return {
-           ...oh,
-           OpenTime: ohOpenTime,
-           CloseTime: ohCloseTime
-       };
-    })
 
-    return { OpeningHours };
+const convertOpeningHourToHHmmFormat = (openingHours) => {
+  const OpeningHours = openingHours.map((oh, idx) => {
+    const ohOpenTime = moment(oh.OpenTime, "h:mm").format("HH:mm");
+    const ohCloseTime = moment(oh.CloseTime, "h:mm").format("HH:mm");
+    return {
+      ...oh,
+      OpenTime: ohOpenTime,
+      CloseTime: ohCloseTime
+    };
+  });
+  return { OpeningHours };
 }
 
 const createGenericOpeningHours = (openTime, closeTime) => {
@@ -82,7 +82,7 @@ const getOperatingHoursByStation = (station) => {
 }
 
 /*
-    Process Hang Seng Data
+  Process Hang Seng Data
 */
 const process_hang_seng_data = (data) => {
   atm = data.data[0].Brand[0].ATM;
@@ -97,7 +97,7 @@ const process_hang_seng_data = (data) => {
 }
 
 /*
-    Process HSBC Data
+  Process HSBC Data
 */
 
 const process_hsbc_data = (data) => {
@@ -112,14 +112,19 @@ const process_hsbc_data = (data) => {
 }
 
 
-/*
-    Main
-*/
-
-
-processed_hang_seng_data = process_hang_seng_data(HANG_SENG_DATA);
-processed_hsbc_data = process_hsbc_data(HSBC_DATA);
-
-// Move to processing folder
-fs.writeFileSync('../processing/hang_seng.json', processed_hang_seng_data);
-fs.writeFileSync('../processing/hsbc.json', processed_hsbc_data);
+module.exports = {
+  processHangSengData: async (inputPath, outputPath) => {
+    info(`Prepare to process hang seng file from ${inputPath}`);
+    const data = fs.readFileSync(inputPath);
+    const processedData = process_hang_seng_data(JSON.parse(data));
+    fs.writeFileSync(outputPath, processedData);
+    remind(`Finsihed processing hang seng file and saved at ${outputPath}`);
+  },
+  processHsbcData: async (inputPath, outputPath) => {
+    info(`Prepare to process hsbc file from ${inputPath}`);
+    const data = fs.readFileSync(inputPath);
+    const processedData = process_hsbc_data(JSON.parse(data));
+    fs.writeFileSync(outputPath, processedData);
+    remind(`Finsihed processing hsbc file and saved at ${outputPath}`);
+  },
+};
