@@ -1,8 +1,9 @@
 {
-  "name": "address-parser",
+  "name": "hk-atm-locator-transformer",
   "version": "0.1.0",
+  "description": "Transformer for hk-atm-locator",
+  "main": "src/process.js",
   "scripts": {
-    "test": "mocha --recursive test",
     "pretest": "eslint ."
   },
   "dependencies": {
@@ -22,5 +23,15 @@
     "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^5.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingkwong/hk-atm-locator.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingkwong/hk-atm-locator/issues"
+  },
+  "homepage": "https://github.com/wingkwong/hk-atm-locator#readme"
 }

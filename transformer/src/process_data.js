@@ -1,4 +1,5 @@
 const fs = require('fs');
+const moment = require('moment');
 const MTR_OPERATING_HOURS = require('../reference/mtr_operating_hours');
 const HANG_SENG_DATA = require('../unprocessed/hang_seng');
 const HSBC_DATA = require('../unprocessed/hsbc');
@@ -23,6 +24,7 @@ const enrichOpeningHours = (record) => {
       const { open_time, close_time } = operatingHoursFromMTRLookup;
       OpeningHours = createGenericOpeningHours(open_time, close_time);
     }
+<<<<<<< HEAD
   } else if (record.ATMServices.AutomatedTellerMachineOperatingHour === 'Subject to Mall Opening Hours') {
     // Just give a generic mall open/close time
     OpeningHours = createGenericOpeningHours("10:00", "20:00");
@@ -43,6 +45,23 @@ const convertOpeningHourToHHmmFormat = (openingHours) => {
   })
 
   return { OpeningHours };
+=======
+    return { OpeningHours };
+}
+
+const convertOpeningHourToHHmmFormat = (openingHours) => {
+    const OpeningHours =  openingHours.map((oh, idx) => {
+       const ohOpenTime = moment(oh.OpenTime,"h:mm").format("HH:mm");
+       const ohCloseTime = moment(oh.CloseTime,"h:mm").format("HH:mm");
+       return {
+           ...oh,
+           OpenTime: ohOpenTime,
+           CloseTime: ohCloseTime
+       };
+    })
+
+    return { OpeningHours };
+>>>>>>> master
 }
 
 const createGenericOpeningHours = (openTime, closeTime) => {
