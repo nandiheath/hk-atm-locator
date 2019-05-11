@@ -15,4 +15,4 @@
 ./transformer/src/process.js process hsbc ./transformer/unprocessed/hsbc.json ./transformer/processing/hsbc.json && \
 ./transformer/src/process.js process-address hsbc ./transformer/processing/hsbc.json ./transformer/processed/hsbc.json
 
-cp -f transformer/processed/* web/src/data
+

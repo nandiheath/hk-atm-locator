@@ -9,6 +9,9 @@ setup_git() {
 commit_country_json_files() {
   git checkout master
 
+  # Move the data files
+  cp -f transformer/processed/* web/src/data
+
   git status
   # Current month and year, e.g: Apr 2018
   dateAndMonth=`date "+%b %Y"`
