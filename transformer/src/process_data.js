@@ -116,6 +116,7 @@ const process_hsbc_data = (data) => {
     Main
 */
 
+
 processed_hang_seng_data = process_hang_seng_data(HANG_SENG_DATA);
 processed_hsbc_data = process_hsbc_data(HSBC_DATA);
 

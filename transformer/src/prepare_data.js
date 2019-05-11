@@ -49,10 +49,8 @@ const prepare_hsbc_data = () => {
 }
 
 
-/*
-    Main
-*/
-async function main() {
-  await prepareHangSengData();
-  await prepareHsbcData();
-}
+module.exports = {
+  prepareHangSengData,
+  prepareHsbcData,
+};
+
